@@ -1,3 +1,5 @@
 #EXTM3U
+#EXTINF:-1 ,CCTV-1 综合
+https://cctvbsw.v.live.baishancdnx.cn/live/cctv1_1/index.m3u8?adapt=0&BR=pub
 #EXTINF:-1 ,CCTV-13 新闻
-https://cctvbsh5c.v.live.baishancdnx.cn/live/cdrmcctv13_1/index.m3u8
+https://cctvksw.v.kcdnvip.com/live/cctv13_1/index.m3u8?adapt=0&BR=pub
