@@ -1,9 +1,17 @@
 #EXTM3U
 #EXTINF:-1 ,CCTV-1 综合
-https://cctvalih5c.v.myalicdn.com/live/cdrmcctv1_1/index.m3u8
+https://cctvksh5ca.v.kcdnvip.com/clive/cctv1_2/index.m3u8?contentid=2820180516001
 #EXTINF:-1 ,CCTV-2 财经
-https://cctvksh5c.v.kcdnvip.com/live/cdrmcctv2_1/index.m3u8
+https://cctvtxyh5ca.liveplay.myqcloud.com/live/cctv2_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 ,CCTV-5+ 体育赛事
+https://cctv5cnch5ca.v.wscdns.com/live/cctv5plus_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 ,CCTV-5 体育
+https://cctv5alih5ca.v.myalicdn.com/live/cctv5_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 ,CCTV-6 电影
+https://cctvcnch5ca.v.wscdns.com/live/cctv6_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 ,CCTV-10 科教
+https://cctvalih5ca.v.myalicdn.com/live/cctv10_2/index.m3u8?contentid=2820180516001
 #EXTINF:-1 ,CCTV-13 新闻
-https://cctvtxyh5c.liveplay.myqcloud.com/live/cdrmcctv13_1/index.m3u8
+https://cctvalih5ca.v.myalicdn.com/live/cctv13_2/index.m3u8?contentid=2820180516001
 #EXTINF:-1 ,斗鱼大鹌鹑直播间
 http://hls1a.douyucdn.cn/live/96291r8HoQTCTd6W_2000/playlist.m3u8?wsSecret=975561270b233b699a33fe76240e9caa&wsTime=1583419443&token=h5-douyu-0-96291-912a22155c66358fc385d6d5ef13bb47&did=b00f6960515b1b28dc7cb47200001531&origin=all&vhost=play2
