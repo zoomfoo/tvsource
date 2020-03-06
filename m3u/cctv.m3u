@@ -13,5 +13,11 @@ https://cctvcnch5ca.v.wscdns.com/live/cctv6_2/index.m3u8?contentid=2820180516001
 https://cctvalih5ca.v.myalicdn.com/live/cctv10_2/index.m3u8?contentid=2820180516001
 #EXTINF:-1 ,CCTV-13 新闻
 https://cctvalih5ca.v.myalicdn.com/live/cctv13_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 ,湖南卫视
+http://ivi.bupt.edu.cn/hls/hunantv.m3u8
+#EXTINF:-1 ,东方卫视
+http://cctvalih5ca.v.myalicdn.com/wstv/dongfang_2/index.m3u8
+#EXTINF:-1 ,浙江卫视
+http://ali.m.l.cztv.com/channels/lantian/channel01/360p.m3u8
 #EXTINF:-1 ,斗鱼大鹌鹑直播间
 http://hls1a.douyucdn.cn/live/96291r8HoQTCTd6W_2000/playlist.m3u8?wsSecret=975561270b233b699a33fe76240e9caa&wsTime=1583419443&token=h5-douyu-0-96291-912a22155c66358fc385d6d5ef13bb47&did=b00f6960515b1b28dc7cb47200001531&origin=all&vhost=play2
