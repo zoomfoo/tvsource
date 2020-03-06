@@ -21,5 +21,7 @@ http://cctvalih5ca.v.myalicdn.com/wstv/dongfang_2/index.m3u8
 http://ali.m.l.cztv.com/channels/lantian/channel01/360p.m3u8
 #EXTINF:-1 ,辽宁卫视
 http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000281301.m3u8
+#EXTINF:-1 ,凤凰卫视中文台
+http://liveali.ifeng.com/live/FHZW.m3u8
 #EXTINF:-1 ,斗鱼大鹌鹑直播间
 http://hls1a.douyucdn.cn/live/96291r8HoQTCTd6W_2000/playlist.m3u8?wsSecret=975561270b233b699a33fe76240e9caa&wsTime=1583419443&token=h5-douyu-0-96291-912a22155c66358fc385d6d5ef13bb47&did=b00f6960515b1b28dc7cb47200001531&origin=all&vhost=play2
