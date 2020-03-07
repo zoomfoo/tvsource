@@ -1,18 +1,41 @@
 #EXTM3U
-#EXTINF:-1 ,CCTV-1 综合
-https://cctvksh5ca.v.kcdnvip.com/clive/cctv1_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-2 财经
-https://cctvtxyh5ca.liveplay.myqcloud.com/live/cctv2_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-5+ 体育赛事
-https://cctv5cnch5ca.v.wscdns.com/live/cctv5plus_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-5 体育
-https://cctv5alih5ca.v.myalicdn.com/live/cctv5_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-6 电影
-https://cctvcnch5ca.v.wscdns.com/live/cctv6_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-10 科教
-https://cctvalih5ca.v.myalicdn.com/live/cctv10_2/index.m3u8?contentid=2820180516001
-#EXTINF:-1 ,CCTV-13 新闻
-https://cctvalih5ca.v.myalicdn.com/live/cctv13_2/index.m3u8?contentid=2820180516001
+#EXTINF:-1 , CCTV1在线直播电视观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000210101.m3u8
+#EXTINF:-1 , CCTV2在线直播电视观看【高清】
+http://live-temp-litchi-hls-yf.jstv.com/live/zhibo-cctv2/online.m3u8
+#EXTINF:-1 , CCTV3在线直播电视观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000203801.m3u8
+#EXTINF:-1 , CCTV4在线直播电视观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204801.m3u8
+#EXTINF:-1 , CCTV5在线直播电视观看【高清】
+http://player.200877926.top/18/tv.php?tv=shydbst&id=cctv5hd
+#EXTINF:-1 , CCTV6在线直播观看电视【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000203301.m3u8
+#EXTINF:-1 , CCTV7在线直播电视_CCTV7国防军事频道直播观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000510001.m3u8
+#EXTINF:-1 , CCTV8在线直播电视观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000203901.m3u8
+#EXTINF:-1 , CCTV9在线直播观看电视【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000499401.m3u8
+#EXTINF:-1 , CCTV10在线直播观看电视【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000203501.m3u8
+#EXTINF:-1 , CCTV11在线直播观看电视【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204101.m3u8
+#EXTINF:-1 , CCTV12在线直播观看电视【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000202601.m3u8
+#EXTINF:-1 , CCTV13在线直播观看电视【高清】
+http://cctvalih5ca.v.myalicdn.com/live/cctv13_2/index.m3u8
+#EXTINF:-1 , CCTV14少儿频道在线直播观看-中央电视台少儿频道直播【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204401.m3u8
+#EXTINF:-1 , CCTV15音乐频道在线直播-中央电视台音乐频道直播【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000205001.m3u8
+#EXTINF:-1 , CCTV5+在线直播观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204501.m3u8
+#EXTINF:-1 , CCTV11戏曲频道直播【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204101.m3u8
+#EXTINF:-1 , CCTV17农业农村频道直播_中央电视台农业农村频道在线直播观看【高清】
+http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000204201.m3u8
+
 #EXTINF:-1 ,湖南卫视
 http://ivi.bupt.edu.cn/hls/hunantv.m3u8
 #EXTINF:-1 ,东方卫视
@@ -27,5 +50,3 @@ http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000272101.m3u
 http://live-wcloud-cdn.ysp.cctv.cn/tlivecloud-cdn.ysp.cctv.cn/001/2000295601.m3u8
 #EXTINF:-1 ,凤凰卫视中文台
 http://liveali.ifeng.com/live/FHZW.m3u8
-#EXTINF:-1 ,斗鱼大鹌鹑直播间
-http://hls1a.douyucdn.cn/live/96291r8HoQTCTd6W_2000/playlist.m3u8?wsSecret=975561270b233b699a33fe76240e9caa&wsTime=1583419443&token=h5-douyu-0-96291-912a22155c66358fc385d6d5ef13bb47&did=b00f6960515b1b28dc7cb47200001531&origin=all&vhost=play2
