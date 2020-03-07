@@ -25,7 +25,7 @@ type Crawler struct {
 }
 
 func Show() {
-	doc, err := getPage(host + "/1/")
+	doc, err := getPage(host + "/4/")
 	if err != nil {
 		logrus.Error("NewDocumentFromReader err: ", err)
 		return
