@@ -9,6 +9,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
 	"github.com/zoomfoo/iplaytv/httplib"
 	"github.com/zoomfoo/iplaytv/utils"
 )
@@ -22,7 +23,16 @@ var headers = map[string]string{
 	"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
 }
 
-func Crawler() {
+var CmdServer = &cobra.Command{
+	Use:   "66zhibo",
+	Short: "66zhibo 直播源获取",
+	Long:  `执行一次 66zhibo 所有直播源`,
+	Run: func(_ *cobra.Command, _ []string) {
+		crawler()
+	},
+}
+
+func crawler() {
 	wg := sync.WaitGroup{}
 	keys := []string{"1", "2", "3", "4"}
 	wg.Add(len(keys))
