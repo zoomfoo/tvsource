@@ -11,8 +11,8 @@ var cmdServer = &cobra.Command{
 	Short: "iplaytv",
 	Long:  `iplaytv`,
 	Run: func(_ *cobra.Command, _ []string) {
-		logrus.Info("ok")
-		spider.Show()
+		logrus.Info("正在执行")
+		spider.Crawler()
 	},
 }
 

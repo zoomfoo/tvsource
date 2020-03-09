@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"sync"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sirupsen/logrus"
@@ -21,25 +22,32 @@ var headers = map[string]string{
 	"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1",
 }
 
-type Crawler struct {
-}
+func Crawler() {
+	wg := sync.WaitGroup{}
+	keys := []string{"1", "2", "3", "4"}
+	wg.Add(len(keys))
+	for _, v := range keys {
+		go func(key string) {
+			defer func() { wg.Done() }()
 
-func Show() {
-	doc, err := getPage(host + "/4/")
-	if err != nil {
-		logrus.Error("NewDocumentFromReader err: ", err)
-		return
+			doc, err := getPage(fmt.Sprintf("%v/%v/", host, key))
+			if err != nil {
+				logrus.Error("NewDocumentFromReader err: ", err)
+				return
+			}
+
+			doc.Find("body > div.wrap > div.list-box.J-medal > ul:nth-child(3) > li").Each(func(i int, s *goquery.Selection) {
+				url, ok := s.Find("a").Attr("href")
+				if !ok {
+					return
+				}
+				title, _ := s.Find("a").Attr("title")
+				data, _ := utils.GbkToUtf8([]byte(title))
+				parseSource(host+url, string(data))
+			})
+		}(v)
 	}
-
-	doc.Find("body > div.wrap > div.list-box.J-medal > ul:nth-child(3) > li").Each(func(i int, s *goquery.Selection) {
-		url, ok := s.Find("a").Attr("href")
-		if !ok {
-			return
-		}
-		title, _ := s.Find("a").Attr("title")
-		data, _ := utils.GbkToUtf8([]byte(title))
-		parseSource(host+url, string(data))
-	})
+	wg.Wait()
 }
 
 func getPage(url string) (*goquery.Document, error) {
