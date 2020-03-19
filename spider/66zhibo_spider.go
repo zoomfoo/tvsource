@@ -37,7 +37,7 @@ func crawler() {
 	keys := []string{"1", "2", "3", "4"}
 	wg.Add(len(keys))
 	for _, v := range keys {
-		go func(key string) {
+		func(key string) {
 			defer func() { wg.Done() }()
 
 			doc, err := getPage(fmt.Sprintf("%v/%v/", host, key))
