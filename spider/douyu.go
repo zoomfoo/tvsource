@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"regexp"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/chromedp/chromedp"
@@ -81,6 +83,19 @@ func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
 
 func (dy *Douyu) printM3u8(doc *goquery.Document) {
 	src, _ := doc.Find("#html5player-video").Attr("src")
-	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v\n`, "", doc.Find("title").Text())
+	style, _ := doc.Find("#root > div > div.l-video > div > div.room-video-play > div > div > div").Attr("style")
+	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v`, getLogo(style), doc.Find("title").Text())
+	fmt.Println("")
 	fmt.Println(src)
+}
+
+func getLogo(str string) string {
+	re, _ := regexp.Compile(`url\(.*"\)`)
+	raw := re.FindString(str)
+	// raw := strings.Replace(, `url("`, "", -1)
+	// raw = strings.Replace(raw, `");`, "", -1)
+	for _, v := range []string{`url`, `"`, `(`, `)`, `;`} {
+		raw = strings.Replace(raw, v, "", -1)
+	}
+	return strings.TrimSpace(raw)
 }
