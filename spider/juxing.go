@@ -12,44 +12,44 @@ import (
 )
 
 const (
-	DouyuHost = "https://m.douyu.com/"
+	JuxingHost = "https://jx.kuwo.cn/"
 )
 
-func NewDouyu(cmd *cobra.Command) {
-	douyuCmd := &cobra.Command{
-		Use:   "douyu",
-		Short: "douyu 直播源获取",
-		Long:  `执行一次 斗鱼 主播 ID 直播源`,
+func NewJuxing(cmd *cobra.Command) {
+	juxingCmd := &cobra.Command{
+		Use:   "juxing",
+		Short: "juxing 直播源获取",
+		Long:  `执行一次聚星主播 ID 直播源`,
 		Run: func(_ *cobra.Command, ids []string) {
-			dy := Douyu{
+			jx := Juxing{
 				liveIDs: ids,
 			}
-			dy.run()
+			jx.run()
 		},
 	}
-	cmd.AddCommand(douyuCmd)
+	cmd.AddCommand(juxingCmd)
 }
 
-type Douyu struct {
+type Juxing struct {
 	liveIDs []string
 }
 
-func (dy *Douyu) run() {
-	dy.findLiveMu38()
+func (jx *Juxing) run() {
+	jx.findLiveMu38()
 }
 
-func (dy *Douyu) findLiveMu38() {
-	for _, id := range dy.liveIDs {
-		doc, err := dy.findLivePage(id)
+func (jx *Juxing) findLiveMu38() {
+	for _, id := range jx.liveIDs {
+		doc, err := jx.findLivePage(id)
 		if err != nil {
 			logrus.Error("findLiveMu38 err ", err)
 			continue
 		}
-		dy.printM3u8(doc)
+		jx.printM3u8(doc)
 	}
 }
 
-func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
+func (jx *Juxing) findLivePage(id string) (*goquery.Document, error) {
 	ctx := context.Background()
 	options := []chromedp.ExecAllocatorOption{
 		chromedp.Flag("headless", true),
@@ -68,8 +68,7 @@ func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
 
 	var html = ""
 	err := chromedp.Run(ctx,
-		chromedp.Navigate(DouyuHost+id),
-		chromedp.WaitVisible(`#root`),
+		chromedp.Navigate(JuxingHost+id),
 		chromedp.OuterHTML(`html`, &html),
 	)
 	if err != nil {
@@ -79,8 +78,8 @@ func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
 	return goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
 }
 
-func (dy *Douyu) printM3u8(doc *goquery.Document) {
-	src, _ := doc.Find("#html5player-video").Attr("src")
-	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v\n`, "", doc.Find("title").Text())
+func (jx *Juxing) printM3u8(doc *goquery.Document) {
+	src, _ := doc.Find("#myVideo").Attr("src")
+	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v\n`, "", doc.Find(".zhubo_name").Text())
 	fmt.Println(src)
 }
