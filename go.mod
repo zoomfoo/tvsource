@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1
-	github.com/chromedp/cdproto v0.0.0-20200209033844-7e00b02ea7d2 // indirect
+	github.com/chromedp/cdproto v0.0.0-20200209033844-7e00b02ea7d2
 	github.com/chromedp/chromedp v0.5.3
 	github.com/gobwas/ws v1.0.3 // indirect
 	github.com/mailru/easyjson v0.7.1 // indirect

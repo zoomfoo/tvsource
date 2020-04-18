@@ -80,6 +80,5 @@ func (jx *Juxing) findLivePage(id string) (*goquery.Document, error) {
 
 func (jx *Juxing) printM3u8(doc *goquery.Document) {
 	src, _ := doc.Find("#myVideo").Attr("src")
-	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v\n`, "", doc.Find(".zhubo_name").Text())
 	fmt.Println(src)
 }

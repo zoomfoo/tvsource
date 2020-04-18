@@ -8,8 +8,9 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/chromedp/cdproto/network"
 	"github.com/chromedp/chromedp"
-	"github.com/sirupsen/logrus"
+	"github.com/chromedp/chromedp/device"
 	"github.com/spf13/cobra"
 )
 
@@ -42,22 +43,16 @@ func (dy *Douyu) run() {
 
 func (dy *Douyu) findLiveMu38() {
 	for _, id := range dy.liveIDs {
-		doc, err := dy.findLivePage(id)
-		if err != nil {
-			logrus.Error("findLiveMu38 err ", err)
-			continue
-		}
-		dy.printM3u8(doc)
+		dy.findLivePage(id)
 	}
 }
 
-func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
+func (dy *Douyu) findLivePage(id string) {
 	ctx := context.Background()
 	options := []chromedp.ExecAllocatorOption{
 		chromedp.Flag("headless", true),
 		chromedp.Flag("hide-scrollbars", false),
 		chromedp.Flag("mute-audio", false),
-		chromedp.UserAgent(`Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1`),
 	}
 
 	options = append(chromedp.DefaultExecAllocatorOptions[:], options...)
@@ -68,20 +63,36 @@ func (dy *Douyu) findLivePage(id string) (*goquery.Document, error) {
 	ctx, cancel := chromedp.NewContext(c)
 	defer cancel()
 
-	var html = ""
+	dy.listenM3u8File(ctx)
+	html := ""
 	err := chromedp.Run(ctx,
+		network.Enable(),
+		chromedp.Emulate(device.IPhoneX),
 		chromedp.Navigate(DouyuHost+id),
-		chromedp.WaitVisible(`#root`),
-		chromedp.OuterHTML(`html`, &html),
+		chromedp.WaitReady("root", chromedp.ByID),
+		chromedp.OuterHTML("html", &html),
 	)
 	if err != nil {
-		return nil, err
+		fmt.Println(err)
 	}
-	// fmt.Println(html)
-	return goquery.NewDocumentFromReader(bytes.NewReader([]byte(html)))
+
+	dy.printM3u8(goquery.NewDocumentFromReader(bytes.NewReader([]byte(html))))
 }
 
-func (dy *Douyu) printM3u8(doc *goquery.Document) {
+func (dy *Douyu) listenM3u8File(ctx context.Context) {
+	chromedp.ListenTarget(ctx, func(event interface{}) {
+		switch ev := event.(type) {
+		case *network.EventResponseReceived:
+			_ = ev.Response.URL
+		}
+	})
+}
+
+func (dy *Douyu) printM3u8(doc *goquery.Document, err error) {
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	src, _ := doc.Find("#html5player-video").Attr("src")
 	style, _ := doc.Find("#root > div > div.l-video > div > div.room-video-play > div > div > div").Attr("style")
 	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v`, getLogo(style), doc.Find("title").Text())
@@ -92,8 +103,6 @@ func (dy *Douyu) printM3u8(doc *goquery.Document) {
 func getLogo(str string) string {
 	re, _ := regexp.Compile(`url\(.*"\)`)
 	raw := re.FindString(str)
-	// raw := strings.Replace(, `url("`, "", -1)
-	// raw = strings.Replace(raw, `");`, "", -1)
 	for _, v := range []string{`url`, `"`, `(`, `)`, `;`} {
 		raw = strings.Replace(raw, v, "", -1)
 	}
