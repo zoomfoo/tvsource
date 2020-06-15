@@ -11,7 +11,9 @@ import (
 	"github.com/chromedp/cdproto/network"
 	"github.com/chromedp/chromedp"
 	"github.com/chromedp/chromedp/device"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/zoomfoo/iplaytv/httplib"
 )
 
 const (
@@ -48,16 +50,23 @@ func (dy *Douyu) findLiveMu38() {
 }
 
 func (dy *Douyu) findLivePage(id string) {
-	ctx := context.Background()
-	options := []chromedp.ExecAllocatorOption{
-		chromedp.Flag("headless", true),
-		chromedp.Flag("hide-scrollbars", false),
-		chromedp.Flag("mute-audio", false),
+	// ctx := context.Background()
+	// options := []chromedp.ExecAllocatorOption{
+	// 	chromedp.Flag("headless", true),
+	// 	chromedp.Flag("hide-scrollbars", false),
+	// 	chromedp.Flag("mute-audio", false),
+	// }
+	// options = append(chromedp.DefaultExecAllocatorOptions[:], options...)
+	// c, cc := chromedp.NewExecAllocator(ctx, options...)
+
+	// 使用前需安装 docker run -d -p 9222:9222 --rm --name headless-shell chromedp/headless-shell
+	addr := "http://localhost:9222/json"
+	simpleJson, err := httplib.Get(addr).ToSimpleJson()
+	if err != nil {
+		logrus.Errorf("get addr error. [err='%v']", err)
+		return
 	}
-
-	options = append(chromedp.DefaultExecAllocatorOptions[:], options...)
-
-	c, cc := chromedp.NewExecAllocator(ctx, options...)
+	c, cc := chromedp.NewRemoteAllocator(context.Background(), simpleJson.GetIndex(0).Get("webSocketDebuggerUrl").MustString())
 	defer cc()
 	// create context
 	ctx, cancel := chromedp.NewContext(c)
@@ -65,14 +74,13 @@ func (dy *Douyu) findLivePage(id string) {
 
 	dy.listenM3u8File(ctx)
 	html := ""
-	err := chromedp.Run(ctx,
+	if err := chromedp.Run(ctx,
 		network.Enable(),
 		chromedp.Emulate(device.IPhoneX),
 		chromedp.Navigate(DouyuHost+id),
 		chromedp.WaitReady("root", chromedp.ByID),
 		chromedp.OuterHTML("html", &html),
-	)
-	if err != nil {
+	); err != nil {
 		fmt.Println(err)
 	}
 

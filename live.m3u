@@ -1,18 +1,20 @@
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/6668676_1615.png/dy1" , 猪猪周z直播_英雄联盟直播_斗鱼直播
-http://hls3.douyucdn.cn/live/6668676rb4JMJ0gz/playlist.m3u8?wsSecret=4a4fe2c5691eed185944f67ed3fff796&wsTime=1587197866&token=h5-douyu-0-6668676-e471004e934b658f8226501734ef7633&did=a4e98166defdbd9b97540e0f00011531&origin=ws&vhost=play3
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/7672058_1616.png/dy1" , Right老黄瓜直播_全面战争直播_斗鱼直播
-http://hls3a.douyucdn.cn/live/7672058rVBeewqky/playlist.m3u8?wsSecret=21091697ffb5093497873345ddd19e6e&wsTime=1587197868&token=h5-douyu-0-7672058-6b4fb36308c811e9e196c189fa4fbe33&did=4470ff52ab2a5a9997de19a400011531&origin=ws&vhost=play4
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/80432_1614.png/dy1" , 午夜抹抹茶直播_最后的绿洲直播_斗鱼直播
+#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200419/6668676_1240.png/dy1" , 猪猪周z直播_英雄联盟直播_斗鱼直播
+http://hls3a.douyucdn.cn/live/6668676rIcWzSNIB/playlist.m3u8?wsSecret=3ee4c21e1c891cdbf28062f4aea5e718&wsTime=1587271305&token=h5-douyu-0-6668676-1d2da841e64881cc97f71000f021b82b&did=b9a4a7633f45f82b651b6c8c00021531&origin=ws&vhost=play4
+#EXTINF:-1 tvg-logo="" , Right老黄瓜直播_全面战争直播_斗鱼直播
 
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/5943281_1615.png/dy1" , 阿俊丶ll直播_恐怖游戏直播_斗鱼直播
-http://hls3a.douyucdn.cn/live/5943281rBq9y8grt_2000/playlist.m3u8?wsSecret=161514b5752e3ea9afef6e4470ac786c&wsTime=1587197874&token=h5-douyu-0-5943281-b913cc71c31628215e6d9a26c81ebefb&did=1d06b78a468386cdcbb807c200011531&origin=ws&vhost=play4
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/6703968_1615.png/dy1" , Mars丶命运丨直播_王者荣耀直播_斗鱼直播
-http://hls3a.douyucdn.cn/live/6703968rTXwAp1BX/playlist.m3u8?wsSecret=70a515cac173e94f3bc25f645ec60042&wsTime=1587197879&token=h5-douyu-0-6703968-cacb4ed659b5a89a7b42a68d3a157f19&did=13e562c3117035cc1591e4ec00011531&origin=ws&vhost=play4
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/16101_1614.png/dy1" , 微笑_微笑直播间16101_英雄联盟直播_斗鱼 - 每个人的直播平台
-http://hlsa.douyucdn.cn/live/16101rm36igvZuqJ_2000/playlist.m3u8?wsSecret=5505d4a176d3d3446a7f09cdaa86d4d4&wsTime=1587197884&token=h5-douyu-0-16101-8fa3817d1eb82fe675a6c09a0bd6cb04&did=2017ebe78da0ad4109960aa200011531&origin=all&vhost=play1
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/7996620_1616.png/dy1" , 牛奶MilkGod直播_英雄联盟直播_斗鱼直播
-http://hls3a.douyucdn.cn/live/7996620roJ4W2bmt_2000/playlist.m3u8?wsSecret=daff6df2dc95c2ea75650caef7d0a3b7&wsTime=1587197889&token=h5-douyu-0-7996620-c9a1544799b954e869d5837821623df6&did=6c293c0494d2efc3bbae19f400011531&origin=ws&vhost=play4
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200418/673305_1614.png/dy1" , 英雄联盟经典赛事点播_英雄联盟经典赛事点播直播间673305_英雄联盟直播_斗鱼 - 每个人的直播平台
-http://hls3.douyucdn.cn/live/673305rlols7_2000/playlist.m3u8?wsSecret=a2f2aab25995f91267f8a281745c7f5f&wsTime=1587197890&token=h5-douyu-0-673305-4afd9128581c8c6ce3e6844ccb188d02&did=88e46e5f1f0441dec1a48abb00011531&origin=ws&vhost=play3
-#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/live-cover/roomCover/cover_update/2020/04/12/6eb65adf9e23b29af5cb2fcca799a809.jpg/dy1" , 大司马_大司马直播间606118_英雄联盟直播_斗鱼-每个人的直播平台
-http://hls1a.douyucdn.cn/live/606118rk7WrI3w6A_2000/playlist.m3u8?wsSecret=71c74e1d2cc1ce6a11514636ad41ba62&wsTime=1587197895&token=h5-douyu-0-606118-6fd49a105d4935140d7220d6a5df7b6c&did=28be1deb6f58d7477fc9fdbf00011531&origin=all&vhost=play2
+#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200419/80432_1234.png/dy1" , 午夜抹抹茶直播_亿万僵尸直播_斗鱼直播
+http://hls3.douyucdn.cn/live/80432rFcTnPkiirn/playlist.m3u8?wsSecret=437e7982d0487d23e695cfa9065cfb5b&wsTime=1587271310&token=h5-douyu-0-80432-98342a20560bf8bd9d0f86ef8d608879&did=cdaf9746bc1aed3bd15332a500021531&origin=ws&vhost=play3
+#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200419/5943281_1235.png/dy1" , 阿俊丶ll直播_恐怖游戏直播_斗鱼直播
+http://hls3a.douyucdn.cn/live/5943281rpghlsW8a_2000/playlist.m3u8?wsSecret=945df68c2aeb60e4e01809a40175f27d&wsTime=1587271313&token=h5-douyu-0-5943281-ce25a8bfa41d654528b6c6a895b087f4&did=d3b2dab6fdd803b83d953ec200021531&origin=ws&vhost=play4
+#EXTINF:-1 tvg-logo="" , Mars丶命运丨直播_王者荣耀直播_斗鱼直播
+
+#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200419/16101_1239.png/dy1" , 微笑_微笑直播间16101_英雄联盟直播_斗鱼 - 每个人的直播平台
+http://hls3.douyucdn.cn/live/16101rLuCSPJzLhM_2000/playlist.m3u8?wsSecret=6a251bd92782cd1a60a397495bdb5a74&wsTime=1587271315&token=h5-douyu-0-16101-42de99b28291b4fa11f20483b6fe828c&did=89eee2facf3643022047b59100021531&origin=ws&vhost=play3
+#EXTINF:-1 tvg-logo="" , 牛奶MilkGod直播_英雄联盟直播_斗鱼直播
+
+#EXTINF:-1 tvg-logo="https://rpic.douyucdn.cn/asrpic/200419/673305_1234.png/dy1" , 英雄联盟经典赛事点播_英雄联盟经典赛事点播直播间673305_英雄联盟直播_斗鱼 - 每个人的直播平台
+http://hls3.douyucdn.cn/live/673305rlols7_2000/playlist.m3u8?wsSecret=5e151e3e8d46365aacd046892a7bfa76&wsTime=1587271320&token=h5-douyu-0-673305-b83211151bba0699491b48f61136cb37&did=f54a0251ce9cb37bad27c52c00021531&origin=ws&vhost=play3
+#EXTINF:-1 tvg-logo="" , 大司马_大司马直播间606118_英雄联盟直播_斗鱼-每个人的直播平台
+
+#EXTINF:-1 tvg-logo="" , 东北大鹌鹑_东北大鹌鹑直播间96291_英雄联盟LOL直播_斗鱼-每个人的直播平台
+
