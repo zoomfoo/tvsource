@@ -2,8 +2,11 @@ package spider
 
 import "github.com/spf13/cobra"
 
+var confPath string
+
 func SpiderCommand(cmd *cobra.Command) {
-	NewDouyu(cmd)
+	cmd.PersistentFlags().StringVarP(&confPath, "config", "c", "./config.conf", "config file (default is ./config.conf)")
+	NewLive(cmd)
 	NewJuxing(cmd)
 	NewTest(cmd)
 }

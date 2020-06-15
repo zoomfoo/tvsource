@@ -7,6 +7,7 @@ require (
 	github.com/chromedp/cdproto v0.0.0-20200608134039-8a80cdaf865c
 	github.com/chromedp/chromedp v0.5.3
 	github.com/gobwas/ws v1.0.3 // indirect
+	github.com/hashicorp/hcl v1.0.0
 	github.com/sirupsen/logrus v1.4.2
 	github.com/spf13/cobra v0.0.6
 	github.com/stretchr/testify v1.5.1

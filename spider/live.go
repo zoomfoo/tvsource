@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"os"
 	"regexp"
 	"strings"
 
@@ -14,42 +15,52 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/zoomfoo/iplaytv/httplib"
+	"github.com/zoomfoo/tvsource/config"
 )
 
 const (
 	DouyuHost = "https://m.douyu.com/"
 )
 
-func NewDouyu(cmd *cobra.Command) {
-	douyuCmd := &cobra.Command{
-		Use:   "douyu",
-		Short: "douyu 直播源获取",
-		Long:  `执行一次 斗鱼 主播 ID 直播源`,
-		Run: func(_ *cobra.Command, ids []string) {
-			dy := Douyu{
+func NewLive(cmd *cobra.Command) {
+	liveCmd := &cobra.Command{
+		Use:   "live",
+		Short: "直播源获取",
+		Long:  `执行一次主播 ID 直播源`,
+		Run: func(_ *cobra.Command, _ []string) {
+			conf := config.NewConfigure(confPath)
+			if len(conf.DouyuLive) == 0 {
+				logrus.Info("没有发现主播房间 id")
+				os.Exit(1)
+			}
+			ids := make([]string, len(conf.DouyuLive))
+			for _, v := range conf.DouyuLive {
+				ids = append(ids, v)
+			}
+			dy := LiveBox{
 				liveIDs: ids,
 			}
 			dy.run()
 		},
 	}
-	cmd.AddCommand(douyuCmd)
+	cmd.AddCommand(liveCmd)
 }
 
-type Douyu struct {
+type LiveBox struct {
 	liveIDs []string
 }
 
-func (dy *Douyu) run() {
-	dy.findLiveMu38()
+func (lb *LiveBox) run() {
+	lb.findLiveMu38()
 }
 
-func (dy *Douyu) findLiveMu38() {
-	for _, id := range dy.liveIDs {
-		dy.findLivePage(id)
+func (lb *LiveBox) findLiveMu38() {
+	for _, id := range lb.liveIDs {
+		lb.findLivePage(id)
 	}
 }
 
-func (dy *Douyu) findLivePage(id string) {
+func (lb *LiveBox) findLivePage(id string) {
 	// ctx := context.Background()
 	// options := []chromedp.ExecAllocatorOption{
 	// 	chromedp.Flag("headless", true),
@@ -64,15 +75,15 @@ func (dy *Douyu) findLivePage(id string) {
 	simpleJson, err := httplib.Get(addr).ToSimpleJson()
 	if err != nil {
 		logrus.Errorf("get addr error. [err='%v']", err)
-		return
+		os.Exit(1)
 	}
-	c, cc := chromedp.NewRemoteAllocator(context.Background(), simpleJson.GetIndex(0).Get("webSocketDebuggerUrl").MustString())
-	defer cc()
+	allocatorCtx, allocatorCancel := chromedp.NewRemoteAllocator(context.Background(), simpleJson.GetIndex(0).Get("webSocketDebuggerUrl").MustString())
+	defer allocatorCancel()
 	// create context
-	ctx, cancel := chromedp.NewContext(c)
+	ctx, cancel := chromedp.NewContext(allocatorCtx)
 	defer cancel()
 
-	dy.listenM3u8File(ctx)
+	lb.listenM3u8File(ctx)
 	html := ""
 	if err := chromedp.Run(ctx,
 		network.Enable(),
@@ -84,10 +95,10 @@ func (dy *Douyu) findLivePage(id string) {
 		fmt.Println(err)
 	}
 
-	dy.printM3u8(goquery.NewDocumentFromReader(bytes.NewReader([]byte(html))))
+	lb.printM3u8(goquery.NewDocumentFromReader(bytes.NewReader([]byte(html))))
 }
 
-func (dy *Douyu) listenM3u8File(ctx context.Context) {
+func (lb *LiveBox) listenM3u8File(ctx context.Context) {
 	chromedp.ListenTarget(ctx, func(event interface{}) {
 		switch ev := event.(type) {
 		case *network.EventResponseReceived:
@@ -96,14 +107,18 @@ func (dy *Douyu) listenM3u8File(ctx context.Context) {
 	})
 }
 
-func (dy *Douyu) printM3u8(doc *goquery.Document, err error) {
+func (lb *LiveBox) printM3u8(doc *goquery.Document, err error) {
 	if err != nil {
 		fmt.Println(err)
-		return
+		os.Exit(1)
 	}
 	src, _ := doc.Find("#html5player-video").Attr("src")
 	style, _ := doc.Find("#root > div > div.l-video > div > div.room-video-play > div > div > div").Attr("style")
-	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v`, getLogo(style), doc.Find("title").Text())
+	logo := getLogo(style)
+	if logo == "" {
+		return
+	}
+	fmt.Printf(`#EXTINF:-1 tvg-logo="%v" , %v`, logo, doc.Find("title").Text())
 	fmt.Println("")
 	fmt.Println(src)
 }
